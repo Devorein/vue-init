@@ -2,8 +2,13 @@
   <div>{{greet}} {{name}}</div>
   <div v-text="text"></div>
   <div v-html="html"></div>
-  <h2 id="headingId">Heading</h2>
+  <p v-bind:class="isDanger ? 'danger bold' : 'safe bold'" >Heading</p>
   <button v-bind:disabled="isDisabled">Disable</button>
+  <p v-bind:class="{
+    danger: isDanger,
+    safe: !isDanger,
+    bold: true
+  }">Hello World</p>
 </template>
 
 <script>
@@ -17,7 +22,8 @@ export default {
       name: "devorein",
       html: "<b>Strong text</b>",
       headingId: 'heading',
-      isDisabled: true
+      isDisabled: true,
+      isDanger: true
     }
   }
 }
@@ -31,5 +37,17 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.danger{
+  color: red;
+}
+
+.safe{
+  color: green;
+}
+
+.bold{
+  font-weight: bolder;
 }
 </style>
