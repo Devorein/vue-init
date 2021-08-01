@@ -1,35 +1,32 @@
 <template>
   <div>
-    <div v-for="post in fetchPosts()" :key="post.name">
-      {{post.name}}
-    </div>
+    <div>{{count}}</div>
+    <input v-on:change="change" type="number"/>
+    <button v-on:click="increment()">Increase counter</button>
+    <button v-on:click="decrement()">Decrease counter</button>
   </div>
 </template>
 
 <script>
+
 export default {
-  name: 'App',
   methods: {
-    sum(a, b, c){
-      return a + b + c
+    increment(){
+      this.count+=this.changeBy
     },
-    fetchPosts(){
-      return this.posts
+    decrement(){
+      this.count-=this.changeBy
+    },
+    change(e){
+      this.changeBy = parseInt(e.target.value)
     }
   },
+  name: 'App',
   data(){
     return {
-      users: ['user 1', 'user 2'],
-      posts: [{
-        name: 'post 1',
-        published: true,
-      }, {
-        name: 'post 2',
-        published: false,
-      }],
-      display: false,
-      loading: false,
-      error: false
+      name: "devorein",
+      count: 0,
+      changeBy: 1
     }
   }
 }
