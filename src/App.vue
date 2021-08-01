@@ -1,18 +1,36 @@
 <template>
-  <div>{{greet}} {{name}}</div>
-  <div v-text="text"></div>
-  <div v-html="html"></div>
-  <p v-bind:class="isDanger ? 'danger bold' : 'safe bold'" >Heading</p>
-  <button v-bind:disabled="isDisabled">Disable</button>
-  <p v-bind:class="{
-    danger: isDanger,
-    safe: !isDanger,
-    bold: true
-  }">Hello World</p>
+  <div>
+    <div>{{greet}} {{name}}</div>
+    <div v-text="text"></div>
+    <div v-html="html"></div>
+    <p v-bind:class="isDanger ? 'danger bold' : 'safe bold'" >Heading</p>
+    <button v-bind:disabled="isDisabled">Disable</button>
+    <p v-bind:class="{
+      danger: isDanger,
+      safe: !isDanger,
+      bold: true
+    }">Hello World</p>
+    <p v-bind:style="{
+      color: isDanger ? 'red' : 'green',
+      fontWeight: isDanger ? 'normal' : 'bold',
+      margin: '50px'
+    }">Dynamic style using object</p>
+    <p v-bind:style="style">Dynamic style using variable</p>
+    <p v-bind:style="[style, style2]">Dynamic style using array of variables</p>
+    <p v-bind:style="[{
+      color: isDanger ? 'red' : 'green',
+      fontWeight: isDanger ? 'normal' : 'bold',
+      margin: '50px'
+    }, {
+      backgroundColor: 'red',
+      textDecoration: 'underline',
+      color: 'yellow'
+    }]">Dynamic style using array of style objects</p>
+  </div>
 </template>
 
 <script>
-
+const isDanger = true;
 export default {
   name: 'App',
   data(){
@@ -23,7 +41,17 @@ export default {
       html: "<b>Strong text</b>",
       headingId: 'heading',
       isDisabled: true,
-      isDanger: true
+      isDanger,
+      style: {
+        color: isDanger ? 'red' : 'green',
+        fontWeight: isDanger ? 'normal' : 'bold',
+        margin: '50px'
+      },
+      style2: {
+        backgroundColor: "red",
+        textDecoration: 'underline',
+        color: 'white'
+      }
     }
   }
 }
