@@ -1,4 +1,28 @@
 topic: Introduction
 subject: Vue
 questions:
-  - question: 
+  - question: Which of the following is the main concern of the core vue library?
+    answers: 0
+    options:
+      - User interface
+      - State management
+      - Routing
+      - Styling
+  - question: Does vue have a component based architecture?
+    options:
+      - Yes
+      - No
+    answers:
+      - 0
+  - question: What sort of paradigm does vue have?
+    answers:
+      - 0
+    options:
+      - declarative
+      - imperative
+  - question: Does vue have a virtual dom?
+    options:
+      - Yes
+      - No
+    answers:
+      - 0
