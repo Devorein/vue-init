@@ -1,9 +1,9 @@
 <template>
   <div>
     <div>{{count}}</div>
-    <input v-on:change="change" type="number"/>
-    <button v-on:click="increment()">Increase counter</button>
-    <button v-on:click="decrement()">Decrease counter</button>
+    <input @change="change" type="number"/>
+    <button @click="increment($event)">Increase counter</button>
+    <button @click="decrement($event)">Decrease counter</button>
   </div>
 </template>
 
