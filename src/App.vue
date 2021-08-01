@@ -1,20 +1,22 @@
 <template>
   <div>
-    <p v-if="loading">Loading</p>
-    <p v-else-if="error">Error occurred</p>
-    <p v-for="(user, index) in users" :key="user">{{index + 1}} {{user}}</p>
-    <template v-for="post in posts" :key="post.name">
-      <div v-if="post.published">
-        Name: {{post.name}}
-      </div>
-    </template>
-
+    <div v-for="post in fetchPosts()" :key="post.name">
+      {{post.name}}
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'App',
+  methods: {
+    sum(a, b, c){
+      return a + b + c
+    },
+    fetchPosts(){
+      return this.posts
+    }
+  },
   data(){
     return {
       users: ['user 1', 'user 2'],
