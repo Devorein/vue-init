@@ -3,10 +3,11 @@
     <p v-if="loading">Loading</p>
     <p v-else-if="error">Error occurred</p>
     <p v-for="(user, index) in users" :key="user">{{index + 1}} {{user}}</p>
-    <p v-for="post in posts" :key="post.name">
-      Name: {{post.name}}
-      <p v-for="likeId in post.likes" :key="likeId">{{likeId}} </p>
-    </p>
+    <template v-for="post in posts" :key="post.name">
+      <div v-if="post.published">
+        Name: {{post.name}}
+      </div>
+    </template>
 
   </div>
 </template>
@@ -20,21 +21,9 @@ export default {
       posts: [{
         name: 'post 1',
         published: true,
-        likes: [
-          1,
-          2,
-          5,
-          8
-        ]
       }, {
         name: 'post 2',
         published: false,
-        likes: [
-          1,
-          2,
-          5,
-          8
-        ]
       }],
       display: false,
       loading: false,
