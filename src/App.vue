@@ -2,11 +2,12 @@
   <div>
     <p v-if="loading">Loading</p>
     <p v-else-if="error">Error occurred</p>
-    <p v-else>{{data.message}}</p>
-    <template v-if="display">
-      <p>{{data.name}}</p>
-      <p>{{data.age}}</p>
-    </template>
+    <p v-for="(user, index) in users" :key="user">{{index + 1}} {{user}}</p>
+    <p v-for="post in posts" :key="post.name">
+      Name: {{post.name}}
+      <p v-for="likeId in post.likes" :key="likeId">{{likeId}} </p>
+    </p>
+
   </div>
 </template>
 
@@ -15,11 +16,26 @@ export default {
   name: 'App',
   data(){
     return {
-      data: {
-        message: "Hello world",
-        name: "devorein",
-        age: 20
-      },
+      users: ['user 1', 'user 2'],
+      posts: [{
+        name: 'post 1',
+        published: true,
+        likes: [
+          1,
+          2,
+          5,
+          8
+        ]
+      }, {
+        name: 'post 2',
+        published: false,
+        likes: [
+          1,
+          2,
+          5,
+          8
+        ]
+      }],
       display: false,
       loading: false,
       error: false
