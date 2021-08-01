@@ -1,0 +1,32 @@
+subject: Vue
+topic: Hello World
+questions:
+  - question: In which of the following ways can vue be added in a project?
+    answers:
+      - 0
+      - 1
+      - 2
+      - 3
+    options:
+      - CDN package
+      - npm package
+      - Vue Cli
+      - Vite
+  - question: Which approach of integrating vue is best for legacy projects?
+    answers:
+      - 0
+    options:
+      - CDN
+      - npm
+      - cli
+      - Vite
+  - question: Which of the following package contains the vue cli?
+    answers:
+      - 0
+    options:
+      - "`@vue/cli`"
+      - vue/cli
+      - vue-cli
+  - question: Write the command to create a basic vue app named `v` using the `@vue/cli`
+    answers:
+      - vue create v
