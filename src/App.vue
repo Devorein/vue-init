@@ -1,9 +1,35 @@
 <template>
   <div>
-    <div>{{count}}</div>
-    <input @change="change" type="number"/>
-    <button @click="increment($event)">Increase counter</button>
-    <button @click="decrement($event)">Decrease counter</button>
+    <form>
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" v-model="formValues.name">
+      </div>
+      <div>
+        <label for="profileSummary">Profile Summary</label>
+        <textarea id="profileSummary" v-model="formValues.profileSummary"/>
+      </div>
+      <div>
+        <label for="country">Country</label>
+        <select name="country" id="country" v-model="formValues.country">
+          <option value="usa">USA</option>
+          <option value="germany">Germany</option>
+          <option value="france">France</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="location">Job Location</label>
+        <select name="location" id="location" multiple v-model="formValues.location">
+          <option value="usa">USA</option>
+          <option value="germany">Germany</option>
+          <option value="france">France</option>
+        </select>
+      </div>
+    </form>
+    <div>
+      <pre>{{JSON.stringify(formValues, null, 2)}}</pre>
+    </div>
   </div>
 </template>
 
@@ -11,46 +37,22 @@
 
 export default {
   methods: {
-    increment(){
-      this.count+=this.changeBy
-    },
-    decrement(){
-      this.count-=this.changeBy
-    },
-    change(e){
-      this.changeBy = parseInt(e.target.value)
-    }
+    
   },
   name: 'App',
   data(){
     return {
-      name: "devorein",
-      count: 0,
-      changeBy: 1
+      formValues: {
+        name: '',
+        profileSummary: '',
+        country: '',
+        location: []
+      }
     }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 
-.danger{
-  color: red;
-}
-
-.safe{
-  color: green;
-}
-
-.bold{
-  font-weight: bolder;
-}
 </style>
