@@ -1,47 +1,31 @@
 <template>
   <div>
+    <h2>Volume tracker (0-20)</h2>
+    <h2>Current volume {{volume}}</h2>
     <div>
-      Fullname {{fullname}}
+      <button @click="volume+=2">+2</button>
+      <button @click="volume-=2">-2</button>
     </div>
-    <button @click="changeFullname">Change fullname</button>
   </div>
 </template>
 
 <script>
 
 export default {
-  methods: {
-    changeFullname(){
-      this.fullname = "Arden Claise"
-    }
-  },
+  methods: {},
   name: 'App',
   data(){
     return {
-      firstname: "Safwan",
-      lastname: "Shaheer",
-      items: [{
-        name:"devorein",
-        age: 20
-      }, {
-        name: "arcoden",
-        age: 21
-      }],
+      volume: 0
     }
   },
   computed: {
-    fullname: {
-      get(){
-        return `${this.firstname} ${this.lastname}`
-      },
-      set(value){
-        const [firstname, lastname] = value.split(" ")
-        this.firstname = firstname
-        this.lastname = lastname
+  },
+  watch: {
+    volume(newValue, oldValue){
+      if(newValue > oldValue && newValue == 16){
+        alert("High volume")
       }
-    },
-    filteredItems(){
-      return this.items.filter(item=>item.age <= 20)
     }
   }
 }
