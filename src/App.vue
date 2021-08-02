@@ -3,7 +3,7 @@
     <div v-for="user in users" :key="'user.'+user.id">
       <Greet :username="user.username" :fullname="user.fullname"/>
       <div v-for="article in user.articles" :key="'article.'+article.id">
-        <Article :authorId="article.authorId" :title="article.title" :likes="article.likes" :published="article.published"/>
+        <Article :authorId="article.authorId" :title="article.title" :likes="article.likes" :published="article.published" @vote="vote(article.id, user.id)"/>
       </div>
     </div>
   </div>
@@ -61,6 +61,17 @@ export default {
     Article
   },
   name: 'App',
+  methods: {
+    vote(articleId, userId){
+      const user = this.users.find(user=>user.id === userId);
+      if(user){
+        const article = user.articles.find(article=>article.id === articleId);
+        if(article){
+          article.likes += 1
+        }
+      }
+    }
+  },
   data(){
     return {
       users

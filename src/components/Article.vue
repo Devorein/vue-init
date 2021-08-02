@@ -3,8 +3,8 @@
     <h2 v-bind="$attrs">{{title}}</h2>
     <p>{{likes}}</p>
     <p>{{published ? "Published" : "Private"}}</p>
-    <template v-if="loggedInUser.id ===authorId">
-      Created by you
+    <template v-if="loggedInUser.id !== authorId">
+      <button @click="$emit('vote')">Vote</button>
     </template>
   </div>
 </template>
@@ -28,6 +28,7 @@
     },
     inheritAttrs: false,
     inject: ['logged', 'loggedInUser'],
+    emits: ['vote']
   }
 </script>
 
