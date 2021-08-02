@@ -1,17 +1,20 @@
 <template>
   <div>
     <h2 v-bind="$attrs">{{title}}</h2>
-    <p>{{likes}}</p>
-    <p>{{published ? "Published" : "Private"}}</p>
+    <p>{{likes}} likes</p>
     <template v-if="loggedInUser.id !== authorId">
       <button @click="$emit('vote', articleId, authorId, amount)">Add Like</button>
       <button @click="$emit('vote', articleId, authorId, -amount)">Remove Like</button>
       <input v-model.number="amount" type="number"/>
     </template>
+    <template v-else>
+      <Checkbox label="Published"/>
+    </template>
   </div>
 </template>
 
 <script>
+  import Checkbox from "./Checkbox.vue";
   export default {
     name: 'Article',
     props: {
@@ -38,6 +41,9 @@
         console.log({authorId, articleId, amount})
         return true;
       }
+    },
+    components: {
+      Checkbox
     },
     data(){
       return {
