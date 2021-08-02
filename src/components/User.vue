@@ -7,7 +7,7 @@
       Username: {{user.username}}
     </div>
     <div v-for="article in user.articles" :key="'article.'+article.id">
-      <Article :authorId="article.authorId" :title="article.title" :likes="article.likes" :published="article.published" :articleId="article.id" @vote="vote"/>
+      <Article :article="article" @vote="vote"/>
     </div>
   </div>
 </template>
