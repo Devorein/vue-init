@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div v-for="item in filteredItems" :key="item.name">
-      <h2>{{item.name}}</h2>
-      <h2>{{item.age}}</h2>
+    <div>
+      Fullname {{fullname}}
     </div>
+    <button @click="changeFullname">Change fullname</button>
   </div>
 </template>
 
@@ -11,11 +11,15 @@
 
 export default {
   methods: {
-
+    changeFullname(){
+      this.fullname = "Arden Claise"
+    }
   },
   name: 'App',
   data(){
     return {
+      firstname: "Safwan",
+      lastname: "Shaheer",
       items: [{
         name:"devorein",
         age: 20
@@ -26,6 +30,16 @@ export default {
     }
   },
   computed: {
+    fullname: {
+      get(){
+        return `${this.firstname} ${this.lastname}`
+      },
+      set(value){
+        const [firstname, lastname] = value.split(" ")
+        this.firstname = firstname
+        this.lastname = lastname
+      }
+    },
     filteredItems(){
       return this.items.filter(item=>item.age <= 20)
     }
