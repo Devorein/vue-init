@@ -1,12 +1,21 @@
 <template>
   <div>
-    Hello World
+    <div>
+      Fullname: {{fullname}}
+    </div>
+    <div>
+      Username: {{username}}
+    </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: "Greet"
+    name: "Greet",
+    props: [
+      'username',
+      'fullname'
+    ]
   }
 </script>
 

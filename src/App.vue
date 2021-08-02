@@ -1,6 +1,8 @@
 <template>
   <div>
-    <Greet />
+    <div v-for="user in users" :key="user.username">
+      <Greet :username="user.username" :fullname="user.fullname"/>
+    </div>
   </div>
 </template>
 
@@ -14,7 +16,13 @@ export default {
   name: 'App',
   data(){
     return {
-      
+      users: [{
+        username: "Devorein",
+        fullname: "Devon Reid"
+      }, {
+        username: "Arcoden",
+        fullname: "Arden Claise"
+      }]
     }
   }
 }
