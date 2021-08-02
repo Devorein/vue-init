@@ -2,7 +2,10 @@
   <div>
     <h2 v-bind="$attrs">{{title}}</h2>
     <p>{{likes}}</p>
-    <p>{{isPublished ? "Published" : "Private"}}</p>
+    <p>{{published ? "Published" : "Private"}}</p>
+    <template v-if="loggedInUser.id ===authorId">
+      Created by you
+    </template>
   </div>
 </template>
 
@@ -18,9 +21,13 @@
         type: Number,
         default: 0
       },
-      isPublished: Boolean
+      authorId: {
+        type: Number
+      },
+      published: Boolean
     },
-    inheritAttrs: false
+    inheritAttrs: false,
+    inject: ['logged', 'loggedInUser'],
   }
 </script>
 
