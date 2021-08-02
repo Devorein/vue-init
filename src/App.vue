@@ -1,17 +1,13 @@
 <template>
   <div>
     <div v-for="user in users" :key="'user.'+user.id">
-      <Greet :username="user.username" :fullname="user.fullname"/>
-      <div v-for="article in user.articles" :key="'article.'+article.id">
-        <Article :authorId="article.authorId" :title="article.title" :likes="article.likes" :published="article.published" @vote="vote(article.id, user.id)"/>
-      </div>
+      <User :user="user"/>
     </div>
   </div>
 </template>
 
 <script>
-import Greet from "./components/Greet.vue"
-import Article from "./components/Article.vue"
+import User from "./components/User.vue"
 
 const users = [{
   id: 1,
@@ -57,21 +53,10 @@ const users = [{
 
 export default {
   components: {
-    Greet,
-    Article
+    User,
   },
   name: 'App',
-  methods: {
-    vote(articleId, userId){
-      const user = this.users.find(user=>user.id === userId);
-      if(user){
-        const article = user.articles.find(article=>article.id === articleId);
-        if(article){
-          article.likes += 1
-        }
-      }
-    }
-  },
+  
   data(){
     return {
       users
@@ -80,7 +65,8 @@ export default {
   provide() {
     return {
       logged: true,
-      loggedInUser: users.find(user => user.id === 1)
+      loggedInUser: users.find(user => user.id === 1),
+      users: this.users
     }
   }
 }

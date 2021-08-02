@@ -4,7 +4,9 @@
     <p>{{likes}}</p>
     <p>{{published ? "Published" : "Private"}}</p>
     <template v-if="loggedInUser.id !== authorId">
-      <button @click="$emit('vote')">Vote</button>
+      <button @click="$emit('vote', articleId, authorId, amount)">Add Like</button>
+      <button @click="$emit('vote', articleId, authorId, -amount)">Remove Like</button>
+      <input v-model.number="amount" type="number"/>
     </template>
   </div>
 </template>
@@ -13,6 +15,9 @@
   export default {
     name: 'Article',
     props: {
+      articleId: {
+        type: Number
+      },
       title: {
         type: String,
         required: true,
@@ -28,7 +33,17 @@
     },
     inheritAttrs: false,
     inject: ['logged', 'loggedInUser'],
-    emits: ['vote']
+    emits: {
+      vote: (authorId, articleId, amount)=>{
+        console.log({authorId, articleId, amount})
+        return true;
+      }
+    },
+    data(){
+      return {
+        amount: 1
+      }
+    }
   }
 </script>
 
