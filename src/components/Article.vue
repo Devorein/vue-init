@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>{{title}}</h2>
+    <h2 v-bind="$attrs">{{title}}</h2>
     <p>{{likes}}</p>
     <p>{{isPublished ? "Published" : "Private"}}</p>
   </div>
@@ -19,7 +19,8 @@
         default: 0
       },
       isPublished: Boolean
-    }
+    },
+    inheritAttrs: false
   }
 </script>
 
