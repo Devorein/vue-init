@@ -1,5 +1,11 @@
 <template>
   <div>
+    <UserList>
+      <template v-slot:default="slotProps">
+        Fullname: {{slotProps.fullname}}
+        Username: {{slotProps.username}}
+      </template>
+    </UserList>
     <div v-for="user in users" :key="'user.'+user.id">
       <User :user="user"/>
     </div>
@@ -8,6 +14,7 @@
 
 <script>
 import User from "./components/User.vue"
+import UserList from "./components/UserList.vue"
 
 const users = [{
   id: 1,
@@ -54,6 +61,7 @@ const users = [{
 export default {
   components: {
     User,
+    UserList
   },
   name: 'App',
   
