@@ -1,28 +1,32 @@
 <template>
   <div>
-    <h2 v-bind="$attrs">{{article.title}}</h2>
-    <p>{{article.likes}} likes</p>
-    <p>{{ article.published ? "Published" : "Private"}}</p>
-    <template v-if="loggedInUser.id !== article.authorId">
-      <button @click="$emit('vote', article.id, article.authorId, amount)">Add Like</button>
-      <button @click="$emit('vote', article.id, article.authorId, -amount)">Remove Like</button>
-      <input v-model.number="amount" type="number"/>
-    </template>
-    <template v-else>
-      <Checkbox :checked="article.published" label="Published" @click="publish"/>
-    </template>
+    <Card>
+      <h2 v-bind="$attrs">{{article.title}}</h2>
+      <p>{{article.likes}} likes</p>
+      <p>{{ article.published ? "Published" : "Private"}}</p>
+      <template v-if="loggedInUser.id !== article.authorId">
+        <button @click="$emit('vote', article.id, article.authorId, amount)">Add Like</button>
+        <button @click="$emit('vote', article.id, article.authorId, -amount)">Remove Like</button>
+        <input v-model.number="amount" type="number"/>
+      </template>
+      <template v-else>
+        <Checkbox :checked="article.published" label="Published" @click="publish"/>
+      </template>
+    </Card>
   </div>
 </template>
 
 <script>
   import Checkbox from "./Checkbox.vue";
+  import Card from "./Card.vue";
   export default {
     name: 'Article',
     props: ['article'],
     inheritAttrs: false,
     inject: ['logged', 'loggedInUser', 'users'],
     components: {
-      Checkbox
+      Checkbox,
+      Card
     },
     data(){
       return {
