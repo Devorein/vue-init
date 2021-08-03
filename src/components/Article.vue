@@ -1,16 +1,23 @@
 <template>
   <div>
     <Card>
-      <h2 v-bind="$attrs">{{article.title}}</h2>
-      <p>{{article.likes}} likes</p>
-      <p>{{ article.published ? "Published" : "Private"}}</p>
-      <template v-if="loggedInUser.id !== article.authorId">
-        <button @click="$emit('vote', article.id, article.authorId, amount)">Add Like</button>
-        <button @click="$emit('vote', article.id, article.authorId, -amount)">Remove Like</button>
-        <input v-model.number="amount" type="number"/>
+      <template v-slot:header>
+        <h2 v-bind="$attrs">{{article.title}}</h2>
       </template>
-      <template v-else>
-        <Checkbox :checked="article.published" label="Published" @click="publish"/>
+      <template v-slot:content>
+        <p>{{article.likes}} likes</p>
+        <p>{{ article.published ? "Published" : "Private"}}</p>
+        <template v-if="loggedInUser.id !== article.authorId">
+          <button @click="$emit('vote', article.id, article.authorId, amount)">Add Like</button>
+          <button @click="$emit('vote', article.id, article.authorId, -amount)">Remove Like</button>
+          <input v-model.number="amount" type="number"/>
+        </template>
+        <template v-else>
+          <Checkbox :checked="article.published" label="Published" @click="publish"/>
+        </template>
+      </template>
+      <template v-slot:footer>
+        <button>View details</button>
       </template>
     </Card>
   </div>
