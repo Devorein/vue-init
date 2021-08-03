@@ -2,10 +2,7 @@
   <div>
     <Tabs @click="onTabChange" :tabs="['Users', 'CreateArticle']"/>
 
-    <Users v-if="activeTab === 'Users'"/>
-    <template v-if="activeTab === 'CreateArticle'">
-      <CreateArticle />
-    </template>
+    <component :is="activeTab"/>
   </div>
 </template>
 
@@ -85,5 +82,7 @@ export default {
 </script>
 
 <style>
-
+body{
+  font-family: "Arial";
+}
 </style>

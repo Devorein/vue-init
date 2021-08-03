@@ -17,7 +17,7 @@
         </template>
       </template>
       <template v-slot:footer>
-        <button>View details</button>
+        <Button label="View details"/>
       </template>
     </Card>
   </div>
@@ -26,6 +26,7 @@
 <script>
   import Checkbox from "./base/Checkbox.vue";
   import Card from "./base/Card.vue";
+  import Button from "./base/Button.vue";
   export default {
     name: 'ArticleCard',
     props: ['article'],
@@ -33,7 +34,8 @@
     inject: ['logged', 'loggedInUser', 'users'],
     components: {
       Checkbox,
-      Card
+      Card,
+      Button
     },
     data(){
       return {

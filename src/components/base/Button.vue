@@ -15,8 +15,13 @@
   button{
     background-color: #275EFE;
     color: white;
-    padding: 3px 10px;
+    padding: 8px 15px;
     margin: 5px;
     border-radius: 3px;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
   }
 </style>
