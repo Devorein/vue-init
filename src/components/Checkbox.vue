@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="checkbox">
+    <input type="checkbox" :checked="checked" @change="$emit('click')">
     <label>{{label}}</label>
   </div>
 </template>
@@ -12,6 +12,14 @@
       label: {
         type: String,
         required: true
+      },
+      checked: {
+        type: Boolean
+      }
+    },
+    emits: {
+      click(){
+        return true
       }
     }
   }
