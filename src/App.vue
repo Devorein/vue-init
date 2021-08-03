@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Tabs @click="onTabChange" :tabs="['User', 'UserList']"/>
+    <Tabs @click="onTabChange" :tabs="['User', 'UserList', 'CreateArticle']"/>
 
     <UserList v-if="activeTab === 'UserList'">
       <template v-slot:default="slotProps">
@@ -14,6 +14,9 @@
         <User :user="user"/>
       </div>
     </template>
+    <template v-if="activeTab === 'CreateArticle'">
+      <CreateArticle />
+    </template>
   </div>
 </template>
 
@@ -21,6 +24,7 @@
 import User from "./components/User.vue"
 import UserList from "./components/UserList.vue"
 import Tabs from "./components/Tabs.vue"
+import CreateArticle from "./components/CreateArticle.vue";
 
 const users = [{
   id: 1,
@@ -68,7 +72,8 @@ export default {
   components: {
     User,
     UserList,
-    Tabs
+    Tabs,
+    CreateArticle
   },
   name: 'App',
   
