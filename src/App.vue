@@ -1,20 +1,26 @@
 <template>
   <div>
-    <UserList>
+    <Tabs @click="onTabChange" :tabs="['User', 'UserList']"/>
+
+    <UserList v-if="activeTab === 'UserList'">
       <template v-slot:default="slotProps">
         Fullname: {{slotProps.fullname}}
         Username: {{slotProps.username}}
+        Total Articles: {{slotProps.totalArticles}}
       </template>
     </UserList>
-    <div v-for="user in users" :key="'user.'+user.id">
-      <User :user="user"/>
-    </div>
+    <template v-if="activeTab === 'User'">
+      <div v-for="user in users" :key="'user.'+user.id">
+        <User :user="user"/>
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
 import User from "./components/User.vue"
 import UserList from "./components/UserList.vue"
+import Tabs from "./components/Tabs.vue"
 
 const users = [{
   id: 1,
@@ -61,13 +67,20 @@ const users = [{
 export default {
   components: {
     User,
-    UserList
+    UserList,
+    Tabs
   },
   name: 'App',
   
   data(){
     return {
-      users
+      users,
+      activeTab: 'User'
+    }
+  },
+  methods: {
+    onTabChange(tab){
+      this.activeTab = tab
     }
   },
   provide() {

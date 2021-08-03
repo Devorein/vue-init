@@ -1,6 +1,6 @@
 <template>
   <h4 v-for="user in users" :key="user.id">
-    <slot :username="user.username" :fullname="user.fullname"></slot>
+    <slot :username="user.username" :fullname="user.fullname" :totalArticles="user.articles.length"></slot>
   </h4>
 </template>
 
