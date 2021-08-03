@@ -7,18 +7,18 @@
       Username: {{user.username}}
     </div>
     <div v-for="article in user.articles" :key="'article.'+article.id">
-      <Article :article="article" @vote="vote"/>
+      <ArticleCard :article="article" @vote="vote"/>
     </div>
   </div>
 </template>
 
 <script>
-  import Article from "../components/Article.vue"
+  import ArticleCard from "./ArticleCard.vue"
   export default {
     components: {
-      Article
+      ArticleCard
     },
-    name: "User",
+    name: "UserCard",
     props: [
       'user',
     ],

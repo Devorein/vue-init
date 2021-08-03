@@ -1,13 +1,8 @@
 <template>
   <div>
-    <Tabs @click="onTabChange" :tabs="['User', 'Users', 'CreateArticle']"/>
+    <Tabs @click="onTabChange" :tabs="['Users', 'CreateArticle']"/>
 
     <Users v-if="activeTab === 'Users'"/>
-    <template v-if="activeTab === 'User'">
-      <div v-for="user in users" :key="'user.'+user.id">
-        <User :user="user"/>
-      </div>
-    </template>
     <template v-if="activeTab === 'CreateArticle'">
       <CreateArticle />
     </template>
@@ -15,7 +10,6 @@
 </template>
 
 <script>
-import User from "./pages/User.vue"
 import Users from "./pages/Users.vue"
 import Tabs from "./components/Tabs.vue"
 import CreateArticle from "./pages/CreateArticle.vue";
@@ -64,17 +58,15 @@ const users = [{
 
 export default {
   components: {
-    User,
     Users,
     Tabs,
     CreateArticle
   },
   name: 'App',
-  
   data(){
     return {
       users,
-      activeTab: 'User'
+      activeTab: 'Users'
     }
   },
   methods: {

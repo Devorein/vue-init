@@ -1,20 +1,20 @@
 <template>
   <List :items="users">
     <template v-slot:default="slotProps">
-      <User :user="slotProps.item"/>
+      <UserCard :user="slotProps.item"/>
     </template>
   </List>
 </template>
 
 <script>
   import List from "../components/List.vue"
-  import User from "./User.vue"
+  import UserCard from "../components/UserCard.vue"
   export default {
     name: 'UserList',
     inject: ['users'],
     components: {
       List,
-      User
+      UserCard
     }
   }
 </script>

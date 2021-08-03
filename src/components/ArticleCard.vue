@@ -27,7 +27,7 @@
   import Checkbox from "./Checkbox.vue";
   import Card from "./Card.vue";
   export default {
-    name: 'Article',
+    name: 'ArticleCard',
     props: ['article'],
     inheritAttrs: false,
     inject: ['logged', 'loggedInUser', 'users'],
