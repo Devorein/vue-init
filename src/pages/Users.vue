@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import List from "../components/List.vue"
+  import List from "../components/base/List.vue"
   import UserCard from "../components/UserCard.vue"
   export default {
     name: 'UserList',

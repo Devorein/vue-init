@@ -24,8 +24,8 @@
 </template>
 
 <script>
-  import Checkbox from "./Checkbox.vue";
-  import Card from "./Card.vue";
+  import Checkbox from "./base/Checkbox.vue";
+  import Card from "./base/Card.vue";
   export default {
     name: 'ArticleCard',
     props: ['article'],

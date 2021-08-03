@@ -11,7 +11,7 @@
 
 <script>
 import Users from "./pages/Users.vue"
-import Tabs from "./components/Tabs.vue"
+import Tabs from "./components/base/Tabs.vue"
 import CreateArticle from "./pages/CreateArticle.vue";
 
 const users = [{
