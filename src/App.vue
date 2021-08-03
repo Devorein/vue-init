@@ -21,10 +21,10 @@
 </template>
 
 <script>
-import User from "./components/User.vue"
-import UserList from "./components/UserList.vue"
+import User from "./pages/User.vue"
+import UserList from "./pages/UserList.vue"
 import Tabs from "./components/Tabs.vue"
-import CreateArticle from "./components/CreateArticle.vue";
+import CreateArticle from "./pages/CreateArticle.vue";
 
 const users = [{
   id: 1,
