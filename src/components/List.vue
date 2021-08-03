@@ -1,12 +1,13 @@
 <template>
-  <h4 v-for="item in items" :key="item.id">
+  <div v-for="item in items" :key="item.id">
     <slot :item="item"></slot>
-  </h4>
+  </div>
 </template>
 
 <script>
   export default {
     name: 'List',
+    props: ['items']
   }
 </script>
 

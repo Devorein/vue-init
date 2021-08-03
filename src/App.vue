@@ -2,13 +2,7 @@
   <div>
     <Tabs @click="onTabChange" :tabs="['User', 'UserList', 'CreateArticle']"/>
 
-    <UserList v-if="activeTab === 'UserList'">
-      <template v-slot:default="slotProps">
-        Fullname: {{slotProps.fullname}}
-        Username: {{slotProps.username}}
-        Total Articles: {{slotProps.totalArticles}}
-      </template>
-    </UserList>
+    <UserList v-if="activeTab === 'UserList'"/>
     <template v-if="activeTab === 'User'">
       <div v-for="user in users" :key="'user.'+user.id">
         <User :user="user"/>

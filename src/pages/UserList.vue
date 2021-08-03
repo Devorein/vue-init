@@ -1,13 +1,21 @@
 <template>
-  <h4 v-for="user in users" :key="user.id">
-    <slot :username="user.username" :fullname="user.fullname" :totalArticles="user.articles.length"></slot>
-  </h4>
+  <List :items="users">
+    <template v-slot:default="slotProps">
+      Fullname: {{slotProps.item.fullname}}
+      Username: {{slotProps.item.username}}
+      Total Articles: {{slotProps.item.articles.length}}
+    </template>
+  </List>
 </template>
 
 <script>
+  import List from "../components/List.vue"
   export default {
     name: 'UserList',
-    inject: ['users']
+    inject: ['users'],
+    components: {
+      List
+    }
   }
 </script>
 
